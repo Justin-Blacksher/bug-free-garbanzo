@@ -4,7 +4,7 @@
 #include <stdlib.h>
 
 void InitGame(Game *game) {
-    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Krazy Kingman Dopes");
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Mountain Hollow");
     SetTargetFPS(60);
     game->camera = (Camera2D){0};
     game->camera.zoom = 1.0f;
@@ -57,15 +57,15 @@ void InitNPCs(Game *game) {
 
     game->npcs[0].x = 34;
     game->npcs[0].y = 32;
-    game->npcs[0].name = strdup("KrakHed");
-    game->npcs[0].dialogue = strdup("Jacked up honor! Not good for life");
+    game->npcs[0].name = strdup("KriminalManimal");
+    game->npcs[0].dialogue = strdup("Ride the Fried Circuit Membrane");
     game->npcs[0].active = 1;
     game->npcs[0].hp = 0;
 
     game->npcs[1].x = 36;
     game->npcs[1].y = 32;
-    game->npcs[1].name = strdup("CEO");
-    game->npcs[1].dialogue = strdup("Do not give away your hard earned money!");
+    game->npcs[1].name = strdup("BudBird");
+    game->npcs[1].dialogue = strdup("Blaze With me homie!");
     game->npcs[1].active = 1;
     game->npcs[1].hp = 50;
 
@@ -75,6 +75,13 @@ void InitNPCs(Game *game) {
     game->npcs[2].dialogue = strdup("Fight me for your food punk!");
     game->npcs[2].active = 1;
     game->npcs[2].hp = 70;
+
+    game->npcs[3].x = 40;
+    game->npcs[3].y = 32;
+    game->npcs[3].name = strdup("LizardLorde");
+    game->npcs[3].dialogue = strdup("Collect what you think you could be useful. Don't bring back old poisoned clues home");
+    game->npcs[3].active = 1;
+    game->npcs[3].hp = 1000;
 
     for (int i = 2; i < MAX_NPCS; i++) {
         game->npcs[i].active = 0;
