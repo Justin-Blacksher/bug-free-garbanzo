@@ -1,0 +1,43 @@
+#include "game.h"
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
+
+void InitGame(Game *game) {
+    InitWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Krazy Kingman Dopes");
+    SetTargetFPS(60);
+    game->camera = (Camera2D){0};
+    game->camera.zoom = 1.0f;
+    game->camera.offset = (Vector2){SCREEN_WIDTH/2.0f, SCREEN_HEIGHT/2.0f};
+
+    game->font = LoadFont("assets/ManufacturingConsent-Regular.ttf");
+    if (game->font.texture.id == 0) {
+        TraceLog(LOG_ERROR, "Failed to load font");
+        return;
+    }
+
+    game->map.tileset = LoadTexture("assets/tiles.png");
+    if (game->map.tileset.id == 0) {
+        TraceLog(LOG_ERROR, "Failed to load Tileset");
+        return;
+    }
+
+    game->player.x = 32;
+    game->player.y = 32;
+    game->player.hp = 100;
+    game->player.mp = 50;
+    game->player.virtue = 0;
+    game->player.item_count = 0;
+    for (int i = 0; i < MAX_ITEMS; i++) {
+        game->player.inventory[i] = NULL;
+    }
+
+    for (int y = 0; y < MAP_HEIGHT; y++) {
+        for (int x = 0; x < MAP_WIDTH; x++) {
+            if (x == 0 || x == MAP_WIDTH - 1 || y == 0 || y == MAP_HEIGHT - 1) {
+                game->map.tiles[x][y] = 2;
+                
+            } else if
+        }
+    }
+}
