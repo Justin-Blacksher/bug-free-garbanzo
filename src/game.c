@@ -145,6 +145,99 @@ void HandleInput(Game *game) {
         if (IsKeyPressed(KEY_DOWN)) new_y++;
         if (IsKeyPressed(KEY_LEFT)) new_x--;
         if (IsKeyPressed(KEY_RIGHT)) new_x++;
-        if (IsKeyPressed(KEY_SPACE)) {}
+        if (IsKeyPressed(KEY_SPACE)) {
+            for (int i = 0; i < MAX_NPCS; i++) {
+                if (game->npcs[i].active && abs(game->player.x - game->npcs[i].x) + abs(game->player.y - game->npcs[i].y) == 1) {
+                    if (game->npcs[i].hp > 0) {
+                        StartCombat(game, i);
+                    }else {
+                        RenderDialogue(game, game->npcs[i].dialogue);
+                        game->player.virtue++;
+                    }
+                }
+            }
+            if (game->map.tiles[game->player.x][game->player.y] == 3 && game->player.item_count < MAX_ITEMS) {
+                game->map.tiles[game->player.x][game->player.y] = 0;
+                game->player.inventory[game->player.item_count] = strdup("Tang and Milk");
+                game->player.item_count++;
+                RenderDialogue(game, "Picked up a Tang and Milk!");
+            } else {
+                char inv[200] = "Inventory: ";
+                for (int i = 0; i < game->player.iem_count; i++) {
+                    strcat(inv, game->player.inventory[i]);
+                    if (i < game->player.item_count -1) strcat(inv, ", ");
+                }
+                RenderDialogue(game, inv);
+                }
+            }
+        if (game->map.tiles[new_x][new_y] != 2) {
+            game->player.x = new_x;
+            game->player.y = new_y;
+        }
     }
+}
+
+void UpdateGame(Game *game) {
+    game->camera.target = (Vector2){
+        game->player.x * TILE_SIZE + TILE_SIZE/2.0f,
+        game->player.y * TILE_SIZE + TILE_SIZE/2.0f
+    };
+    }
+
+void RenderGame(Game *game) {
+    BeginDrawing();
+    ClearBackground(BLACK);
+    BeginMode2D(game->camera);
+
+    for (int y = 0; y < MAP_HEIGHT; y++) {
+        for (int x = 0; x < MAP_WIDTH; x++) {
+            Rectangle src = {(float)(game->map.tiles[x][y] * TILE_SIZE),
+                            0,
+                            (float)TILE_SIZE, (float)TILE_SIZE
+            };
+            Vector2 dst = {
+                (float)(x * TILE_SIZE),
+                (float)(y * TILE_SIZE)
+            };
+            DrawTextureRec(game->map.tileset, src, dst, WHITE);
             
+        }
+    }
+
+    for (int i = 0; i < MAX_NPCS; i++) {
+        if (game->npcs[i].active) {
+            DrawRectangle(game->npcs[i].x * TILE_SIZE,
+                          game->npcs[i].y * TILE_SIZE,
+                          TILE_SIZE,
+                          TILE_SIZE,
+                          BLUE);
+        }
+    }
+
+    DrawRectangle(game->player.x * TILE_SIZE,
+                  game->player.y * TILE_SIZE,
+                  TILE_SIZE,
+                  TILE_SIZE,
+                  RED);
+
+    EndMode2D();
+    RenderStatus(game);
+    EndDrawing();
+    
+    
+}
+
+void CleanupGame(Game *game) {
+    for (int i = 0; i < MAX_NPCS; i++) {
+        if (game->npcs[i].active) {
+            free(game->npcs[i].name);
+            free(game->npcs[i].dialogue);
+        }
+    }
+    UnloadTexture(game->map.tileset);
+    UnloadFont(game->font);
+    CloseWindow();
+    }
+
+
+
