@@ -6,5 +6,10 @@ TARGET = bin/mountainhollow.exe
 
 all: $(TARGET)
 
+
 $(TARGET): $(SRC)
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET)
+		
+	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
+
+clean:
+	del bin\mountainhollow.exe
