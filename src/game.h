@@ -41,7 +41,7 @@ typedef struct {
     NPC npcs[MAX_NPCS];
     int running;
     int in_combat;
-    int combat_npc,index;
+    int combat_npc_index;
 } Game;
 
 void InitGame(Game *game);

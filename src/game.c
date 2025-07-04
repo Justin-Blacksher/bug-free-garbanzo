@@ -163,7 +163,7 @@ void HandleInput(Game *game) {
                 RenderDialogue(game, "Picked up a Tang and Milk!");
             } else {
                 char inv[200] = "Inventory: ";
-                for (int i = 0; i < game->player.iem_count; i++) {
+                for (int i = 0; i < game->player.item_count; i++) {
                     strcat(inv, game->player.inventory[i]);
                     if (i < game->player.item_count -1) strcat(inv, ", ");
                 }
