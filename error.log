@@ -1,0 +1,35 @@
+$ mingw32-make
+gcc  src/main.c src/game.c -o bin/mountainhollow.exe -L C:\raylib\raylib\src -lopengl32 -lgdi32 -lwinmm
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x1f): undefined reference to `InitWindow'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x2b): undefined reference to `SetTargetFPS'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x81): undefined reference to `LoadFont'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xdb): undefined reference to `TraceLog'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xf6): undefined reference to `LoadTexture'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x144): undefined reference to `TraceLog'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x476): undefined reference to `BeginDrawing'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x491): undefined reference to `ClearBackground'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x52c): undefined reference to `DrawTextEx'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x531): undefined reference to `EndDrawing'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x53f): undefined reference to `WaitTime'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x69e): undefined reference to `DrawTextEx'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x6b9): undefined reference to `WindowShouldClose'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x6ec): undefined reference to `IsKeyPressed'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x87c): undefined reference to `IsKeyPressed'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x890): undefined reference to `IsKeyPressed'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x8a4): undefined reference to `IsKeyPressed'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x8b8): undefined reference to `IsKeyPressed'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0x8cc): more undefined references to `IsKeyPressed' follow
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xba4): undefined reference to `BeginDrawing'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xbbf): undefined reference to `ClearBackground'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xbef): undefined reference to `BeginMode2D'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xcd8): undefined reference to `DrawTextureRec'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xd89): undefined reference to `DrawRectangle'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xde0): undefined reference to `DrawRectangle'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xde5): undefined reference to `EndMode2D'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xdf5): undefined reference to `EndDrawing'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xead): undefined reference to `UnloadTexture'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xefa): undefined reference to `UnloadFont'
+C:\Users\Owner\AppData\Local\Temp\cc4NnYAs.o:game.c:(.text+0xeff): undefined reference to `CloseWindow'
+collect2.exe: error: ld returned 1 exit status
+Makefile:12: recipe for target 'bin/mountainhollow.exe' failed
+mingw32-make: *** [bin/mountainhollow.exe] Error 1
